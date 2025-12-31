@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Auto Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. Reset & Basic Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6; /* Light grey background for contrast */
+            height: 200vh; /* Scroll create karne ke liye height di hai */
+        }
+
+        /* --- 2. Navbar Styling (Initial State) --- */
+        .navbar {
+            position: fixed; /* Sticky behaviour ke liye zaroori hai */
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%; /* Normal padding (bari height) */
+            background-color: transparent; /* Shuru mein transparent ya white rakh sakte hain */
+            z-index: 1000;
+            transition: all 0.4s ease-in-out; /* Smooth animation ka raaz yahan hai */
+        }
+
+        /* --- Logo Styling --- */
+        .logo {
+            font-size: 2rem; /* Bara size */
+            font-weight: 700;
+            color: #003366; /* Deep Automotive Blue */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s ease-in-out;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Optional: Car Icon effect using CSS only for demo */
+        .logo span {
+            color: #0088cc; /* Lighter Blue accent */
+        }
+
+        /* --- Menu Links Styling --- */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        /* Hover Effect - Underline Animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #003366;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #003366;
+        }
+
+        /* --- CTA Button --- */
+        .cta-btn {
+            padding: 10px 25px;
+            background-color: #003366;
+            color: white !important;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #002244;
+            color: white;
+        }
+        .cta-btn::after { display: none; } /* Remove underline from button */
+
+        /* --- 3. Scrolled State (JavaScript adds this class) --- */
+        .navbar.scrolled {
+            padding: 15px 8%; /* Padding kam ho gayi (Navbar shrinks) */
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        }
+
+        .navbar.scrolled .logo {
+            font-size: 1.5rem; /* Logo chota ho gaya */
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">Auto<span>Motive</span></a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Inventory</a></li>
+            <li><a href="#">About</a></li>
+            
+        </ul>
+    </nav>
+
+   
+
+    <script>
+        // Navbar element ko select karna
+        const navbar = document.getElementById('navbar');
+
+        // Scroll event listener lagana
+        window.addEventListener('scroll', () => {
+            // Agar user 50 pixels se zyada scroll kare
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled'); // Class add karo
+            } else {
+                navbar.classList.remove('scrolled'); // Class hata do wapis top par aane pe
+            }
+        });
+    </script>
+
+</body>
+</html>
